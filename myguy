@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            transition: background-color 0.4s ease;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .color-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Random Color Generator</h1>
+        <p>Click the button below to generate a new background color.</p>
+        <div class="color-display" id="colorText">#f0f2f5</div>
+        <button id="colorBtn">Generate Color</button>
+    </div>
+
+    <script>
+        const button = document.getElementById('colorBtn');
+        const colorText = document.getElementById('colorText');
+
+        function generateRandomColor() {
+            // Generate a random 6-digit hex code
+            const randomHex = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+            
+            // Apply the background color to the body
+            document.body.style.backgroundColor = randomHex;
+            
+            // Update the text display
+            colorText.textContent = randomHex;
+            colorText.style.color = randomHex;
+        }
+
+        button.addEventListener('click', generateRandomColor);
+    </script>
+
+</body>
+</html>
